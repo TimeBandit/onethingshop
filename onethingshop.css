@@ -1,0 +1,41 @@
+/* CSS declarations go here */
+
+* {
+    font-family: 'Lato', sans-serif;
+}
+
+#wrapper {
+    margin: 0px 20px;
+}
+
+#menu {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    position: fixed;
+    z-index: 10;
+    width: 100%;
+    background-color: #c7c7c7;
+    margin-top: 0px;
+    height: 30px;
+    top: 0px;
+    right: 0px;
+}
+
+.menu-item {
+    font-family: 'Roboto', sans-serif;
+    margin: 0px 10px;
+}
+
+#content {
+	margin-top: 140px;
+}
+
+#home, #features {
+	height: 90vh;
+}
+
+#about, #contact {
+	height: 40vh;
+}
+
