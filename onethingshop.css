@@ -1,41 +1,79 @@
 /* CSS declarations go here */
 
+@import "compass/css3";
 * {
     font-family: 'Lato', sans-serif;
 }
 
-#wrapper {
-    margin: 0px 20px;
-}
-
-#menu {
+.navigation {
+    list-style: none;
+    margin: 0;
+    background: deepskyblue;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
     display: flex;
-    flex-direction: row;
+    -webkit-flex-flow: row wrap;
+    flex-flow: row wrap;
     justify-content: flex-end;
-    position: fixed;
-    z-index: 10;
-    width: 100%;
-    background-color: #c7c7c7;
-    margin-top: 0px;
-    height: 30px;
-    top: 0px;
-    right: 0px;
 }
 
-.menu-item {
-    font-family: 'Roboto', sans-serif;
-    margin: 0px 10px;
+.navigation a {
+    text-decoration: none;
+    display: block;
+    padding: 1em;
+    color: white;
 }
 
-#content {
-	margin-top: 140px;
+.navigation a:hover {
+    background: dodgerblue;
 }
 
-#home, #features {
-	height: 90vh;
+.content {
+    margin: 0;
+    background: #a5dff9;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-flow: row wrap;
+    flex-flow: row wrap;
+    justify-content: space-around;
 }
 
-#about, #contact {
-	height: 40vh;
+.features, .buy {
+	padding: 1em;
+    color: white;
+    flex: 1 auto;
 }
 
+.how, .twitter, .about, .contact {
+	padding: 1em;
+    color: white;
+    flex: 1 100%;
+}
+
+@media all and (max-width: 800px) {
+    .navigation {
+        justify-content: space-around;
+    }
+}
+
+@media all and (max-width: 600px) {
+    .navigation, .content {
+        -webkit-flex-flow: column wrap;
+        flex-flow: column wrap;
+        padding: 0;
+    }
+    .navigation a {
+        text-align: center;
+        padding: 10px;
+        border-top: 1px solid rgba(255, 255, 255, 0.3);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+    .navigation li:last-of-type a {
+        border-bottom: none;
+    }
+}
