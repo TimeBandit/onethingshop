@@ -21,32 +21,66 @@
                     <span class="mdl-layout-title">Post a Spatula</span>
                     <!-- Add spacer, to align navigation to the right -->
                     <div class="mdl-layout-spacer"></div>
-                    <!-- Navigation. We hide it in small screens. -->
-                    <nav class="mdl-navigation mdl-layout--large-screen-only">
-                        <a class="mdl-navigation__link" href="">Home</a>
-                        <a class="mdl-navigation__link" href="">How it Works</a>
-                        <a class="mdl-navigation__link" href="">Twitter</a>
-                        <a class="mdl-navigation__link" href="">Contact</a>
-                    </nav>
                 </div>
             </header>
             <div class="mdl-layout__drawer">
                 <span class="mdl-layout-title">Post a Spatula</span>
                 <nav class="mdl-navigation">
                     <a class="mdl-navigation__link" href="">Home</a>
-                    <a class="mdl-navigation__link" href="">How it Works</a>
                     <a class="mdl-navigation__link" href="">Twitter</a>
+                    <a class="mdl-navigation__link" href="">How it Works</a>
+                    <a class="mdl-navigation__link" href="">About Us</a>
                     <a class="mdl-navigation__link" href="">Contact</a>
                 </nav>
             </div>
             <main class="mdl-layout__content">
-                <div class="page-content">
-                    <div class="features">features</div>
-                    <div class="buy"></div>
-                    <div class="how">how it works</div>
-                    <div class="twitter">twitter</div>
-                    <div class="about">about us</div>
-                    <div class="contact">contact</div>
+                <div class="mdl-grid page-content">
+                    <div class="mdl-cell demo-card-image1 mdl-card mdl-shadow--2dp">
+                        <div class="mdl-card__title mdl-card--expand"></div>
+                        <div class="mdl-card__actions">
+                            <span class="demo-card-image__filename">
+                            Tired of sending cards?</span>
+                        </div>
+                    </div>
+                    <div class="mdl-cell demo-card-image2 mdl-card mdl-shadow--2dp mdl-cell--hide-phone mdl-cell--hide-tablet">
+                        <div class="mdl-card__title mdl-card--expand"></div>
+                        <div class="mdl-card__actions">
+                            <span class="demo-card-image__filename">
+                            Surprise someone.</span>
+                        </div>
+                    </div>
+                    <div class="mdl-cell demo-card-image4 mdl-card mdl-shadow--2dp mdl-cell--hide-phone">
+                        <div class="mdl-card__title mdl-card--expand"></div>
+                        <div class="mdl-card__actions">
+                            <span class="demo-card-image__filename">
+                            100% Anonymous.</span>
+                        </div>
+                    </div>
+                    <div class="mdl-cell mdl-cell--12-col">
+                        <span id="getone"></span>
+                        <!-- Floating Multiline Textfield -->
+                        <div id="message" class="mdl-textfield mdl-js-textfield">
+                            <textarea class="mdl-textfield__input" type="text" rows="3" id="sample5"></textarea>
+                            <label class="mdl-textfield__label" for="sample5">Your Message in 50 Characters...</label>
+                        </div>
+                        <!-- Raised button -->
+                        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+                            BUY THIS £5
+                        </button>
+                    </div>
+                    <div class="twitter mdl-cell mdl-cell--12-col">
+                        <h3>Post a Spatula on Twitter</h3>
+                        <div class="grid" id="tweets"></div>
+                    </div>
+                    <div class="how mdl-cell mdl-cell--12-col">
+                        <h3>How it Works</h3>
+                    </div>
+                    <div class="about mdl-cell mdl-cell--12-col">
+                        <h3>About Us</h3>
+                    </div>
+                    <div class="contact mdl-cell mdl-cell--12-col">
+                        <h3>Contact Us</h3>
+                    </div>
                 </div>
             </main>
         </div>

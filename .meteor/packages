@@ -20,3 +20,5 @@ autopublish             # Publish all data to the clients (for prototyping)
 insecure                # Allow all DB writes from clients (for prototyping)
 react
 slam310:smooth-scroll
+schiller:twit
+mrt:jquery-masonry
