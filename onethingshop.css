@@ -6,18 +6,21 @@
 }
 
 #message {
-	display: block;
-	width: 100%;
+    display: block;
+    width: 100%;
 }
 
 #sample5 {
-	font-size: 24pt;
+    font-size: 24pt;
 }
 
+
+/*
 .mdl-grid {
     max-width: 960px;
     margin: 0px auto;
 }
+*/
 
 .demo-card-image2.mdl-card {
     width: 256px;
@@ -65,4 +68,32 @@
     color: #fff;
     font-size: 18px;
     font-weight: 500;
+}
+
+.tweet {
+    transition: color 1.5s ease;
+    color: transparent;
+}
+
+.tweet:hover {
+    transition: color 1.5s ease;
+    color: #000000;
+}
+
+.tweet > .tw_img {
+    transition: opacity 1.5s ease;
+    opacity: 1;
+}
+
+.tweet > .tw_img:hover {
+    transition: opacity 1.5s ease;
+    opacity: 0;
+}
+
+.grid-item {
+    width: 200px;
+}
+
+.grid-item > img {
+    width: 200px;
 }

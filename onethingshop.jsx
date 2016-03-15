@@ -18,13 +18,17 @@ if (Meteor.isClient) {
 
       setTimeout(function() {
         var $grid = $('.grid').masonry({
-                // options
-                itemSelector: '.grid-item',
-                columnWidth: 200,
-                gutter: 10
-            });
-      }, 5000);
+          // options
+          itemSelector: '.grid-item',
+          columnWidth: 200,
+        });
 
+        // layout Masonry after each image loads
+        $grid.imagesLoaded().progress(function() {
+            $grid.masonry('layout');
+        });
+
+      }, 5000);
       
     // Use Meteor.startup to render the component after the page is ready
     // render the component called APP on startup
@@ -47,9 +51,9 @@ if (Meteor.isServer) {
     });
 
     var args = {
-      count: 5,
-      user_id: 'MagnumPhotos',
-      screen_name: 'MagnumPhotos'
+      count: 20,
+      user_id: 'FoodPornPhotos',
+      screen_name: 'FoodPornPhotos'
     };
 
     res = T.get('statuses/user_timeline', args,  function (err, tweets, response) {
