@@ -1,79 +1,109 @@
 /* CSS declarations go here */
 
-@import "compass/css3";
 * {
     font-family: 'Lato', sans-serif;
 }
 
-.navigation {
-    list-style: none;
-    margin: 0;
-    background: deepskyblue;
-    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: -webkit-flex;
-    display: flex;
-    -webkit-flex-flow: row wrap;
-    flex-flow: row wrap;
-    justify-content: flex-end;
+.page__content {
+    max-width: 900px;
+    margin: 0 auto;
 }
 
-.navigation a {
-    text-decoration: none;
-    display: block;
-    padding: 1em;
-    color: white;
+.buy {
+  min-height: 360px;
 }
 
-.navigation a:hover {
-    background: dodgerblue;
+.mdl-textfield {
+    height: 60%
+
 }
 
-.content {
-    margin: 0;
-    background: #a5dff9;
-    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: -webkit-flex;
-    display: flex;
-    -webkit-flex-flow: row wrap;
-    flex-flow: row wrap;
-    justify-content: space-around;
+div.mdl-card__actions:nth-child(3) {
+    position: absolute;
+    bottom: 21px;
 }
 
-.features, .buy {
-	padding: 1em;
-    color: white;
-    flex: 1 auto;
+#message {
+    height: 100%;
+    width: 100%;
+    font-size: 18pt;
 }
 
-.how, .twitter, .about, .contact {
-	padding: 1em;
-    color: white;
-    flex: 1 100%;
+.mdl-card__supporting-text {
+    font-size: 14pt;
 }
 
-@media all and (max-width: 800px) {
-    .navigation {
-        justify-content: space-around;
-    }
+.demo-card-image2 {
+    min-height: 360px;
+    background: url('img/cup2.jpg');
+    background-position: center;
+    background-size: cover;
 }
 
-@media all and (max-width: 600px) {
-    .navigation, .content {
-        -webkit-flex-flow: column wrap;
-        flex-flow: column wrap;
-        padding: 0;
-    }
-    .navigation a {
-        text-align: center;
-        padding: 10px;
-        border-top: 1px solid rgba(255, 255, 255, 0.3);
-        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-    }
-    .navigation li:last-of-type a {
-        border-bottom: none;
-    }
+.demo-card-image4 {
+    min-height: 360px;
+    background: url('img/cup4.jpg');
+    background-position: center;
+    background-size: cover;
+}
+
+.demo-card-image1 {
+    min-height: 360px;
+    background: url('img/cup1.jpg');
+    background-position: center;
+    background-size: cover;
+}
+
+.demo-card-image2 > .mdl-card__actions {
+    position: absolute;
+    bottom: 0px;
+    height: 52px;
+    padding: 16px;
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.demo-card-image4 > .mdl-card__actions {
+    position: absolute;
+    bottom: 0px;
+    height: 52px;
+    padding: 16px;
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.demo-card-image1 > .mdl-card__actions {
+    position: absolute;
+    bottom: 0px;
+    height: 52px;
+    padding: 16px;
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.demo-card-image__filename {
+    color: #fff;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.tweet {
+    transition: color 1.5s ease;
+    color: transparent;
+}
+
+.tweet:hover {
+    transition: color 1.5s ease;
+    color: #000000;
+}
+
+.tweet > .tw_img {
+    transition: opacity 1.5s ease;
+    opacity: 1;
+}
+
+.tweet > .tw_img:hover {
+    transition: opacity 1.5s ease;
+    opacity: 0;
+}
+
+.grid-item img {
+    width: 200px;
 }
