@@ -21,14 +21,7 @@ if (Meteor.isClient) {
           // options
           itemSelector: '.grid-item',
           columnWidth: 200
-        });
-
-        // layout Masonry after each image loads
-        $grid.imagesLoaded().progress(function() {
-            $grid.masonry('layout');
-        });
-
-        
+        });        
 
       }, 5000);
       
@@ -44,7 +37,7 @@ if (Meteor.isClient) {
     // works not
     // ReactDOM.render(Es6Component, document.getElementById("carousel3"));
 
-    ReactDOM.render(<Buy />, document.getElementById("buy"));
+    ReactDOM.render(<Buy maxlength="70"/>, document.getElementById("buy"));
     
   });
 }

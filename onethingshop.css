@@ -1,9 +1,5 @@
 /* CSS declarations go here */
 
-* {
-    font-family: 'Lato', sans-serif;
-}
-
 .page__content {
     max-width: 900px;
     margin: 0 auto;
@@ -27,6 +23,8 @@ div.mdl-card__actions:nth-child(3) {
     height: 100%;
     width: 100%;
     font-size: 18pt;
+    font-family: 'Coming Soon', cursive;
+    padding: 10px;
 }
 
 .mdl-card__supporting-text {

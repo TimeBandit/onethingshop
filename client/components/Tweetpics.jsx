@@ -25,7 +25,6 @@ Tweetpics = React.createClass({
 			var url = value.entities.media[0].url;
 			var img_src = value.entities.media[0].media_url;
 			var alt = text.split('http', 1)[0];
-			console.log(alt);
 			
 			tw = (
 	                <div className="grid-item" key={key}>
