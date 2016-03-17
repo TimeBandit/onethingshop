@@ -11,31 +11,44 @@ Tweetpics = React.createClass({
 
   		// access the data via this.data
 	    return {
-	      tweets: Tweets.find({}).fetch()
+	    	tweets: Tweets.find({}).fetch(),
+	    	ready: handle.ready()
 	    };
 	  },
 
-	makeTweets(){		
-		// });<div className="tw_text">{text}</div>
+	makeTweets(){
 
-		var t;
+		var tw;
 		var res = _.map(this.data.tweets, function(value, key, list){
+			
 			var {created_at, text, ...other} = value;
-			t = (
-	                <div className="grid-item" key={key}>	                    
-	                    <img src={value.entities.media[0].media_url} alt=""/>                            
+			var url = value.entities.media[0].url;
+			var img_src = value.entities.media[0].media_url;
+			var alt = text.split('http', 1)[0];
+			console.log(alt);
+			
+			tw = (
+	                <div className="grid-item" key={key}>
+	                	<a href={url} target="_blank">
+	                		<img src={img_src} alt={alt}/>
+	                	</a>	                                                
 	                </div>                        
                 );
 
-			return t;		
+			return tw;		
 		});		
 		return res
-	}, 
+	},
 
-	render: function() {		
+	loading() {
+		res = (<img src="img/tail-spin.svg" alt="Loading tweets..."/>)
+		return res
+	},
+
+	render: function() {
 		return (
 			<div className="grid">
-				{this.makeTweets()}
+				{this.data.ready ? this.makeTweets() : this.loading()}
 			</div>
 		);
 	}

@@ -20,7 +20,7 @@ if (Meteor.isClient) {
         var $grid = $('.grid').masonry({
           // options
           itemSelector: '.grid-item',
-          columnWidth: 200,
+          columnWidth: 200
         });
 
         // layout Masonry after each image loads
@@ -28,12 +28,24 @@ if (Meteor.isClient) {
             $grid.masonry('layout');
         });
 
+        
+
       }, 5000);
       
     // Use Meteor.startup to render the component after the page is ready
     // render the component called APP on startup
-    // ReactDOM.render(<App />, document.getElementById("render-target"));
-    ReactDOM.render(<Tweetpics />, document.getElementById("tweets"));    
+    ReactDOM.render(<Tweetpics />, document.getElementById("tweets"));
+    // works not
+    // ReactDOM.render(<StatelessFunction />, document.getElementById("carousel1"));
+    
+    // works
+    ReactDOM.render(<Carousel />, document.getElementById("carousel"));
+    
+    // works not
+    // ReactDOM.render(Es6Component, document.getElementById("carousel3"));
+
+    ReactDOM.render(<Buy />, document.getElementById("buy"));
+    
   });
 }
 
@@ -62,8 +74,8 @@ if (Meteor.isServer) {
       _.each(tweets, function(value, key, list){
           
           console.log(key);
-          // var res = (<div key={key}>o_0</div>);
           if (value.entities.media != undefined) {
+
             self.added('tweets', Random.id(), value);
           };
           
