@@ -26,18 +26,27 @@ Buy = React.createClass({
 	},
 
 	handlePayment: function(e){
+		var self = this;
+
 		e.preventDefault();
-		console.log(Meteor.settings);
+		console.log(this);
 		StripeCheckout.open({
             key: Meteor.settings.public.stripe,
-            amount: 500, // this is equivalent to £5
+            image: 'img/icon.png',
             name: 'Post a Spatula',
-            description: 'Enter the recipents adress to send',
-            panelLabel: 'Pay Now',
-            token: function(res) {
+        	description: 'Enter the recipents adress to send',
+        	currency: 'GBP',        
+        	shippingAddress: true,        	          
+        	panelLabel: 'Pay Now',
+	        zipCode: true,
+	        shippingAddress: true,          
+            token: function(res, args) {
             	stripeToken = res.id;
-              	console.info(res);
-              	Meteor.call('chargeCard', stripeToken);
+              	console.info('the Stripe token ', res);
+              	console.log('The args ', args);
+              	Meteor.call('chargeCard', stripeToken, self.state.message);
+              	// if the method return successfull
+              	// store the customer details + message in the db
             }
           });
 	},
