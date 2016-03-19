@@ -1,5 +1,5 @@
 /*=========================================================
-=            Buy Component - Integrates Stripe            =
+=            'Buy' Component - Integrates Stripe            =
 =========================================================*/
 
 /**
@@ -13,6 +13,34 @@
 Buy = React.createClass({
 	/**
 	 *
+	 * Configure Stripe checkout
+	 *
+	 */
+	
+	componentDidMount: function() {
+		/* Create a Stripe handler and stoe it to state */
+		
+		var handler = StripeCheckout.configure({
+			key: Meteor.settings.public.stripe,
+            image: 'img/icon.png',
+            name: 'Post a Spatula',
+        	description: 'Enter the recipents adress to send',
+        	amount: 500,
+        	locale: 'auto',
+        	currency: 'GBP',
+        	panelLabel: 'Pay Now',
+        	zipCode: true,
+        	billingAddress: false, 
+        	shippingAddress: true        		    
+		});
+
+		this.setState({
+				sh: handler 
+			});	
+	},
+
+	/**
+	 * getInitialState()
 	 * message - customization message
 	 * disabled - applies to the BUY button
 	 */
@@ -25,12 +53,13 @@ Buy = React.createClass({
 	},
 
 	/**
-	 *
+	 * onChange()
 	 * Manage this.state.message, control when the BUY button is enables
 	 *
 	 */
 	
 	onChange: function (e) {
+
 		 e.preventDefault();
 		 var message = e.target.value;
 
@@ -50,7 +79,7 @@ Buy = React.createClass({
 	},
 
 	/**
-	 *
+	 * handlePayment()
 	 * Fetch token from stripe, charge card using token via method call on server
 	 *
 	 */
@@ -58,32 +87,32 @@ Buy = React.createClass({
 	handlePayment: function(e){
 
 		var self = this;
+		var handler = this.state.sh;
 		e.preventDefault();
 		
-		StripeCheckout.open({
-            key: Meteor.settings.public.stripe,
-            image: 'img/icon.png',
-            name: 'Post a Spatula',
-        	description: 'Enter the recipents adress to send',
-        	currency: 'GBP',
-        	billingAddress: false, 
-        	shippingAddress: true,        	          
-        	panelLabel: 'Pay Now',
-	        zipCode: true,
-	        shippingAddress: true,          
+		handler.open({
+
             token: function(res, args) {
 
+            	handler.close()
+
+            	/* extract token */            	
+            	var stripeToken = res.id;
             	/* validate that postcode is in the UK */            	
             	var url = 'https://api.postcodes.io/postcodes/' + args.shipping_address_zip + '/validate';
+
             	HTTP.get(url, function(error, result){
 
             		/* extract the validation flag */            		
-            		var res = JSON.parse(result.content).result;
-            		if ((error || !res)) {
+            		var isUKAdress = JSON.parse(result.content).result;
+
+            		if ((error || !isUKAdress)) {
+
             			console.log('error in post code');
-            			StripeCheckout.close();
+            			handler.close();
             			// raise an error flag, we do not deliver to the UK
             		} else {
+
             			Meteor.call('chargeCard', stripeToken, self.state.message, args);		
             		}
             	});
