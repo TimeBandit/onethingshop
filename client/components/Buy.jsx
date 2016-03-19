@@ -1,4 +1,22 @@
+/*=========================================================
+=            Buy Component - Integrates Stripe            =
+=========================================================*/
+
+/**
+
+	TODO:
+	- First todo item
+	- Second todo item
+
+ */
+
 Buy = React.createClass({
+	/**
+	 *
+	 * message - customization message
+	 * disabled - applies to the BUY button
+	 */
+	
 	getInitialState: function() {
 		return {
 			message: "",
@@ -6,6 +24,12 @@ Buy = React.createClass({
 		};
 	},
 
+	/**
+	 *
+	 * Manage this.state.message, control when the BUY button is enables
+	 *
+	 */
+	
 	onChange: function (e) {
 		 e.preventDefault();
 		 var message = e.target.value;
@@ -25,28 +49,44 @@ Buy = React.createClass({
 		 }
 	},
 
+	/**
+	 *
+	 * Fetch token from stripe, charge card using token via method call on server
+	 *
+	 */
+	
 	handlePayment: function(e){
-		var self = this;
 
+		var self = this;
 		e.preventDefault();
-		console.log(this);
+		
 		StripeCheckout.open({
             key: Meteor.settings.public.stripe,
             image: 'img/icon.png',
             name: 'Post a Spatula',
         	description: 'Enter the recipents adress to send',
-        	currency: 'GBP',        
+        	currency: 'GBP',
+        	billingAddress: false, 
         	shippingAddress: true,        	          
         	panelLabel: 'Pay Now',
 	        zipCode: true,
 	        shippingAddress: true,          
             token: function(res, args) {
-            	stripeToken = res.id;
-              	console.info('the Stripe token ', res);
-              	console.log('The args ', args);
-              	Meteor.call('chargeCard', stripeToken, self.state.message);
-              	// if the method return successfull
-              	// store the customer details + message in the db
+
+            	/* validate that postcode is in the UK */            	
+            	var url = 'https://api.postcodes.io/postcodes/' + args.shipping_address_zip + '/validate';
+            	HTTP.get(url, function(error, result){
+
+            		/* extract the validation flag */            		
+            		var res = JSON.parse(result.content).result;
+            		if ((error || !res)) {
+            			console.log('error in post code');
+            			StripeCheckout.close();
+            			// raise an error flag, we do not deliver to the UK
+            		} else {
+            			Meteor.call('chargeCard', stripeToken, self.state.message, args);		
+            		}
+            	});
             }
           });
 	},
