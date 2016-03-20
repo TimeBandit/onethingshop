@@ -19,6 +19,7 @@ if (Meteor.isServer){
      */
     
     'chargeCard': function(stripeToken, message, args) {
+      var self = this;
             
       var Stripe = StripeAPI(Meteor.settings.private.stripe);
       var metadata = args;
@@ -31,9 +32,12 @@ if (Meteor.isServer){
         source: stripeToken,
         metadata: metadata
       }, function(err, charge) {
-
-        console.log('Stripe.charges.create callback');
+        /* runs asynch */
+        
+        console.log('===================');
         console.log(err);
+        console.log('**********');
+        console.log(charge);
       });
     }
   });

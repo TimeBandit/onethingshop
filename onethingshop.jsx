@@ -1,51 +1,54 @@
-// only on client
+/*===========================================
+=            Client + Sever Code            =
+===========================================*/
+
+/**
+
+  TODO:
+  - move twitter keys to settings file
+  - Second todo item
+
+ */
+
+
+/**
+ *
+ * init collections
+ * render components
+ */
+
 if (Meteor.isClient) {
+
+  /* hold fetched tweets */  
   Tweets = new Mongo.Collection('tweets');
   
-  // This code is executed on the client only
-    Meteor.startup(function () {
-      console.log('awake! o_0');
-      smoothScroll.init(
-      {
-        selector: '[data-scroll]', // Selector for links (must be a valid CSS selector)
-        selectorHeader: '[data-scroll-header]', // Selector for fixed headers (must be a valid CSS selector)
-        speed: 500, // Integer. How fast to complete the scroll in milliseconds
-        easing: 'easeInOutCubic', // Easing pattern to use
-        updateURL: true, // Boolean. Whether or not to update the URL with the anchor hash on scroll
-        offset: 0, // Integer. How far to offset the scrolling anchor location in pixels
-        callback: function ( toggle, anchor ) {} // Function to run after scrolling
-      });
+  /* hold stripe transaction result */  
+  StripeOutcome = new Mongo.Collection('stripeOutcome');
+  
+  Meteor.startup(function () {
 
-      setTimeout(function() {
-        var $grid = $('.grid').masonry({
-          // options
-          itemSelector: '.grid-item',
-          columnWidth: 200
-        });        
-
-      }, 5000);
-      
-    // Use Meteor.startup to render the component after the page is ready
-    // render the component called APP on startup
-    ReactDOM.render(<Tweetpics />, document.getElementById("tweets"));
-    // works not
-    // ReactDOM.render(<StatelessFunction />, document.getElementById("carousel1"));
-    
-    // works
-    ReactDOM.render(<Carousel />, document.getElementById("carousel"));
-    
-    // works not
-    // ReactDOM.render(Es6Component, document.getElementById("carousel3"));
-
-    ReactDOM.render(<Buy maxlength="70"/>, document.getElementById("buy"));
+      console.info('IN CLIENT o_0');
+          
+      /* render components */    
+      ReactDOM.render(<Tweetpics />, document.getElementById("tweets"));
+      ReactDOM.render(<Carousel />, document.getElementById("carousel"));
+      ReactDOM.render(<Buy maxlength="70"/>, document.getElementById("buy"));
     
   });
 }
 
+/**
+ *
+ * server side code to fetch tweets from timeline
+ *
+ */
+
 if (Meteor.isServer) {
-  console.log('im in server');
+
+  console.log('IN SERVER o_0');
+
   Meteor.publish('tweets', function(){
-    console.log('im in publish');
+
     var self = this;
 
     var T = new Twit({
@@ -61,19 +64,23 @@ if (Meteor.isServer) {
       screen_name: 'FoodPornPhotos'
     };
 
+    /* fetch tweets */    
     res = T.get('statuses/user_timeline', args,  function (err, tweets, response) {
-      console.log('got tweets');
+
+      console.log('TWEETS RECEIVED');
       
       _.each(tweets, function(value, key, list){
           
-          console.log(key);
           if (value.entities.media != undefined) {
-
+            /* add each tweet to the collection */
+            
             self.added('tweets', Random.id(), value);
           };
           
       });
-
+      /* inform the client that the subscription is ready */
+      
+      console.log('PUBLICATION READY o_0');
       self.ready();
     });
   });
