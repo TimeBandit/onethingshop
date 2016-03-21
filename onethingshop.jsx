@@ -23,7 +23,7 @@ if (Meteor.isClient) {
   Tweets = new Mongo.Collection('tweets');
   
   /* hold stripe transaction result */  
-  StripeOutcome = new Mongo.Collection('stripeOutcome');
+  Transaction = new Mongo.Collection('transaction');
   
   Meteor.startup(function () {
 

@@ -19,7 +19,7 @@ Tweetpics = React.createClass({
 
 	 componentDidMount: function() {
 
-	 	setTimeout(function() {
+	 	Meteor.setTimeout(function() {
                
 			var $grid = $('.grid').imagesLoaded( function() {
 				// init Masonry after all images have loaded
@@ -29,7 +29,7 @@ Tweetpics = React.createClass({
 					columnWidth: 200
 				});
 			});
-		}, 300);
+		}, 5000);
 	 },
 	
 	/* This mixin makes the getMeteordata method work */	

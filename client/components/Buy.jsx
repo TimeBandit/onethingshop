@@ -7,6 +7,15 @@
 	TODO:
 	- First todo item
 	- Second todo item
+	- possible ways to report transaction result back to client
+		- use session > this is client side only
+		- use a client side db > can be done and would be reactive but needs a 
+		subscription and db queeies
+		- use send a callback function sent to the serverside that update a reactive var
+		on the client > dont know if you can do this, most complicated of the three
+		- create a collections transation, the user subscribes to the reult of only their
+		transaction. on the server the id's of all transactions are added to a common collection
+		- fetch the transaction status via the API
 
  */
 
@@ -98,6 +107,7 @@ Buy = React.createClass({
 
             	/* extract token */            	
             	var stripeToken = res.id;
+
             	/* validate that postcode is in the UK */            	
             	var url = 'https://api.postcodes.io/postcodes/' + args.shipping_address_zip + '/validate';
 
@@ -113,7 +123,8 @@ Buy = React.createClass({
             			// raise an error flag, we do not deliver to the UK
             		} else {
 
-            			Meteor.call('chargeCard', stripeToken, self.state.message, args);		
+            			var r = Meteor.call('chargeCard', stripeToken, self.state.message, args);
+            			console.log('result of meteor method ', r);	
             		}
             	});
             }
