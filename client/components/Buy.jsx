@@ -45,7 +45,7 @@ Buy = React.createClass({
 
 		this.setState({
 				sh: handler 
-			});	
+			});
 	},
 
 	/**
@@ -123,8 +123,18 @@ Buy = React.createClass({
             			// raise an error flag, we do not deliver to the UK
             		} else {
 
-            			var r = Meteor.call('chargeCard', stripeToken, self.state.message, args);
-            			console.log('result of meteor method ', r);	
+            			Meteor.call('chargeCard', stripeToken, self.state.message, args, function(err, result){
+            				if (err) {
+            					console.log('1 ', err.message);
+            					Session.set('success', false);
+            					Session.set('message', result.message);
+            				} else if (result) {
+            					console.log('2 ', err.status);
+            					Session.set('pass', true);
+            					Session.set('message', result.status);            					
+            				}
+            			});
+            			
             		}
             	});
             }

@@ -12,6 +12,11 @@
 
 if (Meteor.isServer){
   Meteor.methods({
+
+    'test': function(){
+      return 10
+    },
+
     /**
      *
      * Charge a payment card
@@ -22,53 +27,29 @@ if (Meteor.isServer){
       var self = this;
             
       var Stripe = StripeAPI(Meteor.settings.private.stripe);
+      // var Stripe = StripeSync(Meteor.settings.private.stripe);
+      var charge = Meteor.wrapAsync(Stripe.charges.create, Stripe.charges);
       
       var metadata = args;
           metadata.message = message;
 
-      /* wrapAsynch the stripe charges.create */
-      var synchResult;
-      var synchCharge = Meteor.wrapAsync(Stripe.charges.create, Stripe.charges);     
-      
-      Stripe.charges.create({
-         
-        amount: 500,
-        currency: 'GBP',        
-        source: stripeToken,
-        metadata: metadata
-      }, function(err, charge) {
-        /* asynch callback */
-        
-        /* build result document */
+      try {
 
-        var res = {
-          success: false,
-          message: ""
-        }
+        // Stripe.charges.create
+        var res =  charge({         
+          amount: 500,
+          currency: 'GBP',        
+          source: stripeToken,
+          metadata: metadata
+        })
 
-        if (err) {
+        return res;
 
-          res.message = err.message;
+      } catch(error) {
+        // statements
+        throw new Meteor.Error(1001, error.message);
+      }
 
-        } else if (charge) {
-
-          res.success = true;
-          res.message = charge.status;
-
-        }
-
-        // delete all objects in the collction
-        // Transaction.remove({}, (err) => {console.log(err)});
-        // add new result
-        // Transaction.insert(res, (err) => {console.log(err)});
-
-        // self.added('tweets', Random.id(), value);
-        // self.ready();
-        console.log('===================');
-        console.log(err);
-        console.log('**********');
-        console.log(charge);
-      });
     }
   });
 }

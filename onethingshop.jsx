@@ -17,22 +17,37 @@
  * render components
  */
 
-if (Meteor.isClient) {
 
-  /* hold fetched tweets */  
-  Tweets = new Mongo.Collection('tweets');
-  
-  /* hold stripe transaction result */  
-  Transaction = new Mongo.Collection('transaction');
-  
-  Meteor.startup(function () {
 
-      console.info('IN CLIENT o_0');
-          
-      /* render components */    
-      ReactDOM.render(<Tweetpics />, document.getElementById("tweets"));
-      ReactDOM.render(<Carousel />, document.getElementById("carousel"));
-      ReactDOM.render(<Buy maxlength="70"/>, document.getElementById("buy"));
+if (Meteor.isClient) {  
+  
+  Meteor.startup(function () {    
+
+    console.info('IN CLIENT o_0');
+
+    /* hold fetched tweets */  
+    Tweets = new Mongo.Collection('tweets');      
+  
+    Session.setDefault('success', false);
+    Session.setDefault('message', '');
+
+    /* render components */    
+    ReactDOM.render(<Tweetpics />, document.getElementById("tweets"));
+    ReactDOM.render(<Carousel />, document.getElementById("carousel"));
+    ReactDOM.render(<Buy maxlength="70"/>, document.getElementById("buy"));
+
+    Tracker.autorun(function () {
+      console.log('in tracker');
+
+      var snackbarContainer = document.querySelector('#demo-toast-example');
+      snackbarContainer === true ? console.log('true') : console.log('false');
+      if (snackbarContainer) {
+        console.log(snackbarContainer);
+        var data = {message: Session.get('message')};
+        snackbarContainer.MaterialSnackbar.showSnackbar({message: 'hi'});  
+      }      
+
+    });
     
   });
 }

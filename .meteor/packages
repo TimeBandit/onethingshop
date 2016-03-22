@@ -22,6 +22,10 @@ schiller:twit
 mrt:jquery-masonry
 random
 timbrandin:slick
-mrgalaxy:stripe
 http
 mrt:jquery-imagesloaded
+meteorhacks:npm
+
+
+npm-container
+mrgalaxy:stripe
