@@ -123,23 +123,32 @@ Buy = React.createClass({
             			// raise an error flag, we do not deliver to the UK
             		} else {
 
-            			Meteor.call('chargeCard', stripeToken, self.state.message, args, function(err, result){
-            				if (err) {
-            					console.log('1 ', err.message);
-            					Session.set('success', false);
-            					Session.set('message', result.message);
-            				} else if (result) {
-            					console.log('2 ', err.status);
-            					Session.set('pass', true);
-            					Session.set('message', result.status);            					
-            				}
-            			});
-            			
+            			var metadata = args;
+          					metadata.message = message;
+
+            			var options =  {         
+							          amount: 500,
+							          currency: 'GBP',        
+							          source: stripeToken,
+							          metadata: metadata
+							        };			
+
+            			Meteor.call('chargeCard', options , function(error, result){
+            				console.log('back from call');
+            				if (result.data) {
+								
+								console.log(result.data["status"]);
+		        				
+		        				} else {
+		        				
+	        					console.log(result.error["message"])
+	        				}
+	        			});
             		}
             	});
             }
-          });
-	},
+		});
+	},	
 
     render: function() {
         return (
