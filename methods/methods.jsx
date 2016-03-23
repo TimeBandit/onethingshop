@@ -26,23 +26,15 @@ if (Meteor.isServer){
       
       var Stripe = StripeAPI(Meteor.settings.private.stripe);
 
-      // Meteor.wrapAsync doesn't return the error object correctly #2774
-      // https://stackoverflow.com/questions/26226583/meteor-proper-use-of-meteor-wrapasync-on-server
-      var charge = Meteor.makeAsync(Stripe.charges.create, Stripe.charges);
-      
-      try{
-        console.log('trying');
+      var response = Async.runSync(function(done) {
+        Stripe.charges.create(options, function(err, charge){
+          
+          done(err, charge);
+          
+        })        
+      });
+      return response;
 
-        // Stripe.charges.create
-        var result = charge(options);
-        console.log("result : ", result);
-        return result        
-        }
-
-      catch(error){
-        console.log('catching');
-        console.log("error",error.message);
-      }
     }
   });
 }

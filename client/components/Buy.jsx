@@ -135,13 +135,13 @@ Buy = React.createClass({
 
             			Meteor.call('chargeCard', options , function(error, result){
             				console.log('back from call');
-            				if (result.data) {
+            				if (result) {
 								
-								console.log(result.data["status"]);
+								console.log(result.result.status);
 		        				
 		        				} else {
 		        				
-	        					console.log(result.error["message"])
+	        					console.log(error)
 	        				}
 	        			});
             		}
