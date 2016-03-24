@@ -35,13 +35,13 @@ if (Meteor.isServer){
 
         // Stripe.charges.create
         var result = charge(options);
-        console.log("result : ", result);
+        // console.log("result : ", result);
         return result        
         }
 
       catch(error){
         console.log('catching');
-        console.log("error",error.message);
+        // console.log("error",error.message);
       }
     }
   });

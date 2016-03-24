@@ -35,19 +35,6 @@ if (Meteor.isClient) {
     ReactDOM.render(<Tweetpics />, document.getElementById("tweets"));
     ReactDOM.render(<Carousel />, document.getElementById("carousel"));
     ReactDOM.render(<Buy maxlength="70"/>, document.getElementById("buy"));
-
-    Tracker.autorun(function () {
-      console.log('in tracker');
-
-      var snackbarContainer = document.querySelector('#demo-toast-example');
-      snackbarContainer === true ? console.log('true') : console.log('false');
-      if (snackbarContainer) {
-        console.log(snackbarContainer);
-        var data = {message: Session.get('message')};
-        snackbarContainer.MaterialSnackbar.showSnackbar({message: 'hi'});  
-      }      
-
-    });
     
   });
 }

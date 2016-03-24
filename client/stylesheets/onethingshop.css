@@ -1,8 +1,17 @@
 /* CSS declarations go here */
 
+body {
+    background-image: url('img/swirl_pattern.png');
+    background-position: center center;
+    background-repeat: repeat;
+
+}
+
 .page__content {
     max-width: 900px;
     margin: 0 auto;
+    padding-top: 50px;
+    
 }
 
 .buy {
@@ -10,20 +19,27 @@
 }
 
 .mdl-textfield {
-    height: 60%
+    height: 50%
 
 }
 
 div.mdl-card__actions:nth-child(3) {
     position: absolute;
     bottom: 21px;
+
 }
 
+/* Comment 
+
+// .mdl-button {
+//     margin-left: 90px;
+// }
+*/
 #message {
     height: 100%;
     width: 100%;
     font-size: 18pt;
-    font-family: 'Coming Soon', cursive;
+    /* font-family: 'Coming Soon', cursive; */
     padding: 10px;
 }
 
