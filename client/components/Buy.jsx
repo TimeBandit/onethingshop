@@ -80,13 +80,43 @@ Buy = React.createClass({
 		 	this.setState({
 			 		disabled: true
 			 	}); 	
-		 }else {
+		 } else {
 		 	this.setState({
 			 		disabled: false
 			 	});
 		 }
 	},
 
+	/**
+	 *
+	 * isInUk()
+	 *
+	 */
+	 isInUk: function (postCode) {
+	 	/* is this postcode in the uk, true/false? */ 
+      	var url = 'https://api.postcodes.io/postcodes/' + postCode + '/validate';
+      	
+      	var synchHttpGet = Meteor.wrapAsync(HTTP.get, HTTP);
+      	var response, result;
+
+      	try {
+      		
+      		response = synchHttpGet(url);
+      		result = JSON.parse(response.content).result;
+
+      		if (result) {
+      			// in uk
+      			return true;
+      		}
+      		// not in uk
+      		return fasle;
+      		
+      	} catch(e) {
+      		
+      		console.log(e.reason);
+      	}
+	 },
+	
 	/**
 	 * handlePayment()
 	 * Fetch token from stripe, charge card using token via method call on server
@@ -106,8 +136,6 @@ Buy = React.createClass({
 
             token: function(res, args) {
 
-            	handler.close()
-
             	/* extract token */            	
             	var stripeToken = res.id;
 
@@ -122,8 +150,10 @@ Buy = React.createClass({
             		if ((error || !isUKAdress)) {
 
             			console.log('error in post code');
+
             			handler.close();
             			// raise an error flag, we do not deliver to the UK
+
             		} else {
 
             			var metadata = args;
@@ -137,6 +167,7 @@ Buy = React.createClass({
 							        };			
 
             			Meteor.call('chargeCard', options , function(error, result){
+            				
             				console.log('back from call');
 
             				if (result.data) {
@@ -152,6 +183,7 @@ Buy = React.createClass({
 								swal({
 								  title: "Sweet!",
 								  text: msg,
+								  type: "success",
 								  imageUrl: "img/icon.png",
 								  imageSize: "80x80"
 								});
@@ -166,6 +198,7 @@ Buy = React.createClass({
 	        					swal({
 								  title: "Oops!",
 								  text: msg,
+								  type: "success",
 								  imageUrl: "img/icon.png",
 								  imageSize: "80x80"
 								});
