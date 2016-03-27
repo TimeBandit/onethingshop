@@ -19,6 +19,8 @@
 
  */
 
+
+
 Buy = React.createClass({
 	/**
 	 *
@@ -99,22 +101,32 @@ Buy = React.createClass({
       	var synchHttpGet = Meteor.wrapAsync(HTTP.get, HTTP);
       	var response, result;
 
-      	try {
-      		
-      		response = synchHttpGet(url);
-      		result = JSON.parse(response.content).result;
+      	var r = synchHttpGet(url, function (error, response) {
+      		 console.log(url);
+      		 console.log(JSON.parse(response.content).result, error);
+      		 console.log('ping pong');
+      		 return JSON.parse(response.content).result
+      		 
+      	});
+      	console.log(r);
+      	return r;
 
-      		if (result) {
-      			// in uk
-      			return true;
-      		}
-      		// not in uk
-      		return fasle;
+      	// try {
       		
-      	} catch(e) {
+      	// 	response = synchHttpGet(url);
+      	// 	result = JSON.parse(response.content).result;
+
+      	// 	if (result) {
+      	// 		// in uk
+      	// 		return true;
+      	// 	}
+      	// 	// not in uk
+      	// 	return false;
       		
-      		console.log(e.reason);
-      	}
+      	// } catch(e) {
+      		
+      	// 	console.log(e.reason);
+      	// }
 	 },
 	
 	/**
@@ -141,7 +153,7 @@ Buy = React.createClass({
 
             	/* validate that postcode is in the UK */            	
             	var url = 'https://api.postcodes.io/postcodes/' + args.shipping_address_zip + '/validate';
-
+            	console.log('==>> ', self.isInUk('b94jf'));
             	HTTP.get(url, function(error, result){
 
             		/* extract the validation flag */            		
@@ -184,7 +196,6 @@ Buy = React.createClass({
 								  title: "Sweet!",
 								  text: msg,
 								  type: "success",
-								  imageUrl: "img/icon.png",
 								  imageSize: "80x80"
 								});
 		        				
@@ -198,8 +209,7 @@ Buy = React.createClass({
 	        					swal({
 								  title: "Oops!",
 								  text: msg,
-								  type: "success",
-								  imageUrl: "img/icon.png",
+								  type: "error",
 								  imageSize: "80x80"
 								});
 	        				}
