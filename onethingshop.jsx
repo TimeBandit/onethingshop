@@ -21,7 +21,15 @@
 
 if (Meteor.isClient) {  
   
-  Meteor.startup(function () {    
+  Meteor.startup(function () {   
+
+    /* smooth scrolling */
+    smoothScroll.init({
+      selectorHeader: '[data-scroll-header]',
+      callback: function ( toggle, anchor ) {
+        console.log(anchor);
+      } 
+    });
 
     console.info('IN CLIENT o_0');
 
@@ -75,7 +83,7 @@ if (Meteor.isServer) {
           
           if (value.entities.media != undefined) {
             /* add each tweet to the collection */
-            
+            // console.log(value);
             self.added('tweets', Random.id(), value);
           };
           

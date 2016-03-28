@@ -12,47 +12,83 @@
 </head>
 
 <body>
-    <div class="demo-layout-transparent mdl-layout mdl-js-layout">
-  <header class="mdl-layout__header mdl-layout__header--transparent">
-    <div class="mdl-layout__header-row">
-      <!-- Title -->
-      <span class="mdl-layout-title">Post a Spatula</span>
-      <!-- Add spacer, to align navigation to the right -->
-      <div class="mdl-layout-spacer"></div>
-      <!-- Navigation -->
-      <nav class="mdl-navigation">
-        <a class="mdl-navigation__link" href="">x</a>        
-      </nav>
-    </div>
-  </header>
-  <div class="mdl-layout__drawer">
-    <span class="mdl-layout-title">Post a Spatula</span>
-    <nav class="mdl-navigation">
-      <a class="mdl-navigation__link" href="">Who's been Tweeting</a>
-      <a class="mdl-navigation__link" href="">How it Works</a>
-    </nav>
-  </div>
-            <main class="mdl-layout__content">
-                <div class="mdl-grid page__content">
-                    <div id="carousel" class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--8-col"></div>
-                    <div id="buy" class="mdl-card mdl-cell mdl-cell--8-col mdl-cell--4-col-desktop"></div>
-                    <div class="twitter mdl-cell mdl-cell--12-col">
-                        <h3>Who's been Tweeting</h3>
-                        <div id="tweets"></div>
-                    </div>
-                    <div class="how mdl-cell mdl-cell--12-col">
-                        <h3>How it Works</h3>
-
-                    </div>
-                    <div class="about mdl-cell mdl-cell--12-col">
-                        <h3>About Us</h3>
-                    </div>
-                    <div class="contact mdl-cell mdl-cell--12-col">
-                        <h3>Contact Us</h3>
+    <!-- Always shows a header, even in smaller screens. -->
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--no-desktop-drawer-button">
+        <header class="mdl-layout__header">
+            <div class="mdl-layout__header-row">
+                <!-- Title -->
+                <span class="mdl-layout-title">Post a Spatula</span>
+                <!-- Add spacer, to align navigation to the right -->
+                <div class="mdl-layout-spacer"></div>
+                <!-- Navigation. We hide it in small screens. -->
+                <nav class="mdl-navigation mdl-layout--large-screen-only">
+                    <a class="mdl-navigation__link" data-scroll-header href="#buy">Buy</a>
+                    <a class="mdl-navigation__link" data-scroll-header href="#tweets">Tweets</a>
+                    <a class="mdl-navigation__link" data-scroll-header href="#how">How it Works</a>
+                    <a class="mdl-navigation__link" data-scroll-header href="#contact">Contact</a>
+                </nav>
+            </div>
+        </header>
+        <div class="mdl-layout__drawer">
+            <span class="mdl-layout-title">Post a Spatula</span>
+            <nav class="mdl-navigation">
+                <a class="mdl-navigation__link" data-scroll-header href="#buy">Buy</a>
+                <a class="mdl-navigation__link" data-scroll-header href="#tweets">Tweets</a>
+                <a class="mdl-navigation__link" data-scroll-header href="#how">How it Works</a>
+                <a class="mdl-navigation__link" data-scroll-header href="#contact">Contact</a>
+            </nav>
+        </div>
+        <main class="mdl-layout__content">
+            <div class="mdl-grid page__content">
+                <div id="carousel" class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--8-col"></div>
+                <div id="buy" class="mdl-card mdl-cell mdl-cell--8-col mdl-cell--4-col-desktop"></div>
+                <div class="twitter mdl-cell mdl-cell--12-col">
+                    <h3>Who's been Tweeting</h3>
+                    <div id="tweets"></div>
+                </div>
+                <div id="how" class="how mdl-cell mdl-cell--12-col">
+                    <h3>How it Works</h3>
+                    <div class="mdl-grid">
+                        <div class="mdl-card mdl-cell mdl-cell--4-col">
+                            <div class="mdl-card__title">
+                                <h2 class="mdl-card__title-text">1</h2>
+                            </div>
+                            <div class="mdl-card__supporting-text">
+                                Enter a message of 70 characters or less into the box. Shorter messages can be written in larger letters. Any expletives will be replaced with ****'s.
+                            </div>
+                        </div>
+                        <div class="mdl-card mdl-cell mdl-cell--4-col">
+                            <div class="mdl-card__title">
+                                <h2 class="mdl-card__title-text">2</h2>
+                            </div>
+                            <div class="mdl-card__supporting-text">
+                                Press the 'BUY' button to enter your payment shipping &amp; details. Remember to enter the correct shipping details of the person you will send a spatula to. Enter your payment card details and pay.
+                            </div>
+                        </div>
+                        <div class="mdl-card mdl-cell mdl-cell--4-col">
+                            <div class="mdl-card__title">
+                                <h2 class="mdl-card__title-text">3</h2>
+                            </div>
+                            <div class="mdl-card__supporting-text">
+                                The payment will process. You will see a confirmation message. You will not be charged if the card is declined. Enjoy!
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </main>
-        </div>
-        
-
+                <div id="contact" class="how mdl-cell mdl-cell--12-col">
+                    <h2>Contact Us</h2>
+                </div>
+            </div>
+            <footer class="mdl-mini-footer">
+                <div class="mdl-mini-footer__left-section">
+                    <div class="mdl-logo">Post a Spatula</div>
+                    <ul class="mdl-mini-footer__link-list">
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Privacy &amp; Terms</a></li>
+                    </ul>
+                </div>
+            </footer>
+        </main>
+    </div>
 </body>

@@ -16,6 +16,7 @@
 		- create a collections transation, the user subscribes to the reult of only their
 		transaction. on the server the id's of all transactions are added to a common collection
 		- fetch the transaction status via the API
+	- disable and clear form after all pass/fail transactions
 
  */
 
@@ -89,52 +90,6 @@ Buy = React.createClass({
 		 }
 	},
 
-	/**
-	 *
-	 * isInUk()
-	 *
-	 */
-	 isInUk: function (postCode) {
-	 	/* is this postcode in the uk, true/false? */ 
-      	var url = 'https://api.postcodes.io/postcodes/' + postCode + '/validate';
-      	
-      	var synchHttpGet = Meteor.wrapAsync(HTTP.get, HTTP);
-      	var response, result;
-
-      	var r = synchHttpGet(url, function (error, response) {
-      		 console.log(url);
-      		 console.log(JSON.parse(response.content).result, error);
-      		 console.log('ping pong');
-      		 return JSON.parse(response.content).result
-      		 
-      	});
-      	console.log(r);
-      	return r;
-
-      	// try {
-      		
-      	// 	response = synchHttpGet(url);
-      	// 	result = JSON.parse(response.content).result;
-
-      	// 	if (result) {
-      	// 		// in uk
-      	// 		return true;
-      	// 	}
-      	// 	// not in uk
-      	// 	return false;
-      		
-      	// } catch(e) {
-      		
-      	// 	console.log(e.reason);
-      	// }
-	 },
-	
-	/**
-	 * handlePayment()
-	 * Fetch token from stripe, charge card using token via method call on server
-	 *
-	 */
-	
 	handlePayment: function(e){
 
 		var self = this;
@@ -153,7 +108,7 @@ Buy = React.createClass({
 
             	/* validate that postcode is in the UK */            	
             	var url = 'https://api.postcodes.io/postcodes/' + args.shipping_address_zip + '/validate';
-            	console.log('==>> ', self.isInUk('b94jf'));
+            	
             	HTTP.get(url, function(error, result){
 
             		/* extract the validation flag */            		
@@ -181,8 +136,10 @@ Buy = React.createClass({
             			Meteor.call('chargeCard', options , function(error, result){
             				
             				console.log('back from call');
-
+            				// result.data.status = "succeeded"
+            				// result.error.message = "Your card was declined."
             				if (result.data) {
+            					
 								
 								self.setState({
 									message: '' 
@@ -193,7 +150,7 @@ Buy = React.createClass({
 									way to ' + args.shipping_name + '!';
 
 								swal({
-								  title: "Sweet!",
+								  title: result.data.status,
 								  text: msg,
 								  type: "success",
 								  imageSize: "80x80"
@@ -207,7 +164,7 @@ Buy = React.createClass({
 	        						You have not been charged';
 
 	        					swal({
-								  title: "Oops!",
+								  title: result.error.message,
 								  text: msg,
 								  type: "error",
 								  imageSize: "80x80"

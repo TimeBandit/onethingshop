@@ -70,13 +70,14 @@ Tweetpics = React.createClass({
 			var {created_at, text, ...other} = value;
 			var url = value.entities.media[0].url;
 			var img_src = value.entities.media[0].media_url;
+			var tweet_id = value.id;
 			var alt = text.split('http', 1)[0];
 			
 			tw = (
 	                <div className="grid-item" key={key}>
 	                	<a href={url} target="_blank">
-	                		<img src={img_src} alt={alt}/>
-	                	</a>	                                                
+	                		<img src={img_src} alt={alt} />
+	                	</a>	                	
 	                </div>                        
                 );
 

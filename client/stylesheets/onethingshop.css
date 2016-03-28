@@ -1,7 +1,7 @@
 /* CSS declarations go here */
 
 body {
-    background-image: url('img/swirl_pattern.png');
+    background-image: url('img/light_grey.png');
     background-position: center center;
     background-repeat: repeat;
 
@@ -11,6 +11,7 @@ body {
     max-width: 900px;
     margin: 0 auto;
     padding-top: 50px;
+    padding-left: 50px;
     
 }
 
@@ -29,12 +30,6 @@ div.mdl-card__actions:nth-child(3) {
 
 }
 
-/* Comment 
-
-// .mdl-button {
-//     margin-left: 90px;
-// }
-*/
 #message {
     height: 100%;
     width: 100%;
@@ -120,4 +115,24 @@ div.mdl-card__actions:nth-child(3) {
 
 .grid-item img {
     width: 200px;
+}
+
+.how > .mdl-grid {
+    padding: 0px;
+}
+
+/* how it works cards */
+
+div.mdl-cell--4-col:nth-child(1) {
+    margin-left: 0px;
+    background-color: #dedcce;
+}
+
+div.mdl-cell--4-col:nth-child(2) {
+    background-color: #dedcce;
+}
+
+div.mdl-card:nth-child(3) {
+    margin-right: 0px;
+    background-color: #dedcce;
 }
