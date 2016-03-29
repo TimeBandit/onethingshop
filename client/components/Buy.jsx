@@ -124,7 +124,7 @@ Buy = React.createClass({
             		} else {
 
             			var metadata = args;
-          					metadata.message = message;
+          					metadata.message =  self.state.message;
 
             			var options =  {         
 							          amount: 500,
@@ -158,7 +158,10 @@ Buy = React.createClass({
 		        				
 		        				} else {
 		        				
-	        					
+	        					self.setState({
+									message: '' 
+								});
+
 	        					let msg = 'Oops your card provider \
 	        						declined this transaction. \
 	        						You have not been charged';

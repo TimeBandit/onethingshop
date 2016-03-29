@@ -136,3 +136,7 @@ div.mdl-card:nth-child(3) {
     margin-right: 0px;
     background-color: #dedcce;
 }
+
+i {
+    margin-left: 5px;
+}
