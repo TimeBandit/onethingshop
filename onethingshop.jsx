@@ -62,10 +62,10 @@ if (Meteor.isServer) {
     var self = this;
 
     var T = new Twit({
-      consumer_key:         'fdSe5vUc99welC30DOp2ltaca',
-      consumer_secret:      'XpOLMlhxLydmdF1qjQKPqF7sqI9iYpuBRY1E2Jhp0ZkZkQGrtd', 
-      access_token:         '610359512-xCEh6tFIt14lP1ouZ6TFo2PKPR4FJ4N8XxiMlXfQ', 
-      access_token_secret:  '39boff7gryzbzB1cWOAwvZ0w9RY47Wu5Uqih5RnIbEo69'
+      consumer_key:         Meteor.settings.public.consumer_key,
+      consumer_secret:      Meteor.settings.private.consumer_secret, 
+      access_token:         Meteor.settings.public.access_token, 
+      access_token_secret:  Meteor.settings.private.access_token_secret
     });
 
     var args = {
