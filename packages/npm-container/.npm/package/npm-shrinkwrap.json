@@ -1,7 +1,9 @@
 {
   "dependencies": {
     "fibers": {
-      "version": "1.0.10"
+      "version": "1.0.10",
+      "resolved": "https://registry.npmjs.org/fibers/-/fibers-1.0.10.tgz",
+      "from": "fibers@1.0.10"
     }
   }
 }
