@@ -1,7 +1,8 @@
 Meteor.startup(function(){
 
   if (Meteor.isServer) {
-    Future = Meteor.npmRequire('fibers/future');
+    // Future = Meteor.npmRequire('fibers/future');
+    Future = Npm.require('fibers/future');
   }
   
   Meteor.makeAsync = function(fn, context) {

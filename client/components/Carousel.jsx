@@ -1,3 +1,5 @@
+import React from 'react';
+
 Carousel = React.createClass({
 
 	componentDidMount: function() {

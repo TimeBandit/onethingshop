@@ -10,6 +10,8 @@
 
  */
 
+import React from 'react';
+
 Tweetpics = React.createClass({
 	/**
 	 *

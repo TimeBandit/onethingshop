@@ -17,7 +17,10 @@
  * render components
  */
 
-
+import { Meteor } from 'meteor/meteor';
+import { render } from 'react-dom';
+import React from 'react';
+// adad
 
 if (Meteor.isClient) {  
   
@@ -36,13 +39,10 @@ if (Meteor.isClient) {
     /* hold fetched tweets */  
     Tweets = new Mongo.Collection('tweets');      
   
-    Session.setDefault('success', false);
-    Session.setDefault('message', '');
-
     /* render components */    
-    ReactDOM.render(<Tweetpics />, document.getElementById("tweets"));
-    ReactDOM.render(<Carousel />, document.getElementById("carousel"));
-    ReactDOM.render(<Buy maxlength="70"/>, document.getElementById("buy"));
+    render(<Tweetpics />, document.getElementById("tweets"));
+    render(<Carousel />, document.getElementById("carousel"));
+    render(<Buy maxlength="70"/>, document.getElementById("buy"));
     
   });
 }

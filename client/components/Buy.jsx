@@ -21,6 +21,7 @@
  */
 
 
+import React from 'react';
 
 Buy = React.createClass({
 	/**
