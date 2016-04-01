@@ -20,7 +20,30 @@
 import { Meteor } from 'meteor/meteor';
 import { render } from 'react-dom';
 import React from 'react';
-// adad
+
+function HowCard(props) {
+
+  var outer = {
+    width: 'auto',
+    height: '320px'
+  }
+
+  var title = {
+    color: '#fff',
+    background: "url({props.url}) bottom right 15% no-repeat #46B6AC",
+  }
+  
+  return (
+    <div className="demo-card-square mdl-card mdl-shadow--2dp" style={outer}>
+      <div className="mdl-card__title mdl-card--expand" style={title}>
+        <h2 className="mdl-card__title-text">{props.stepnum}</h2>
+      </div>
+      <div className="mdl-card__supporting-text">
+        {props.description}
+      </div>      
+    </div>
+  )
+};
 
 if (Meteor.isClient) {  
   
@@ -43,6 +66,20 @@ if (Meteor.isClient) {
     render(<Tweetpics />, document.getElementById("tweets"));
     render(<Carousel />, document.getElementById("carousel"));
     render(<Buy maxlength="70"/>, document.getElementById("buy"));
+    
+    render(<HowCard stepnum="One"
+      description="Enter a message of 70 characters or less into the box. Shorter 
+       messages can be written in larger letters. Any expletives will be replaced 
+        with ****'s." 
+      />, document.getElementById("step1"));
+    
+    render(<HowCard stepnum="Two"
+      description="Press the 'BUY' button to enter your payment shipping &amp; details. Remember to enter the correct shipping details of the person you will send a spatula to. Enter your payment card details and pay."
+      />, document.getElementById("step2"));
+    
+    render(<HowCard stepnum="Three" 
+      description="The payment will process. You will see a confirmation message. You will not be charged if the card is declined. Enjoy!" 
+      />, document.getElementById("step3"));
     
   });
 }
