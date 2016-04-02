@@ -121,22 +121,6 @@ div.mdl-card__actions:nth-child(3) {
     padding: 0px;
 }
 
-/* how it works cards */
-
-div.mdl-cell--4-col:nth-child(1) {
-    margin-left: 0px;
-    background-color: #dedcce;
-}
-
-div.mdl-cell--4-col:nth-child(2) {
-    background-color: #dedcce;
-}
-
-div.mdl-card:nth-child(3) {
-    margin-right: 0px;
-    background-color: #dedcce;
-}
-
 i {
     margin-left: 5px;
 }
