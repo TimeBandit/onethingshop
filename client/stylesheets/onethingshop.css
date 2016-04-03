@@ -15,49 +15,22 @@ body {
     
 }
 
-.buy {
-  min-height: 360px;
-}
-
-.mdl-textfield {
-    height: 50%
-
-}
-
-div.mdl-card__actions:nth-child(3) {
-    position: absolute;
-    bottom: 21px;
-
-}
-
-#message {
-    height: 100%;
-    width: 100%;
-    font-size: 18pt;
-    /* font-family: 'Coming Soon', cursive; */
-    padding: 10px;
-}
-
-.mdl-card__supporting-text {
-    font-size: 14pt;
-}
-
 .demo-card-image2 {
-    min-height: 360px;
+    min-height: 284px;
     background: url('img/cup2.jpg');
     background-position: center;
     background-size: cover;
 }
 
 .demo-card-image4 {
-    min-height: 360px;
+    min-height: 284px;
     background: url('img/cup4.jpg');
     background-position: center;
     background-size: cover;
 }
 
 .demo-card-image1 {
-    min-height: 360px;
+    min-height: 284px;
     background: url('img/cup1.jpg');
     background-position: center;
     background-size: cover;
@@ -91,6 +64,23 @@ div.mdl-card__actions:nth-child(3) {
     color: #fff;
     font-size: 18px;
     font-weight: 500;
+}
+
+#how1>.mdl-card, #how2>.mdl-card, #how3>.mdl-card {
+    height: 100%
+}
+
+#message {
+    width: 100%;
+}
+
+#message textarea {
+    font-size: 18pt;
+    border-color: #ffffff;
+}
+
+#charCount {
+    padding-top: 10px;
 }
 
 .tweet {

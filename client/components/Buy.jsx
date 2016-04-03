@@ -183,31 +183,32 @@ Buy = React.createClass({
 
     render: function() {
         return (
-            <div className="buy">
-            	<div className="mdl-textfield mdl-js-textfield">
-				    <textarea className="mdl-textfield__input" 
-				    	type="text" 
-				    	rows= "3" 
-				    	id="message" 
-				    	onChange={this.onChange} 
-						value={this.state.message} 
-						maxLength={parseInt(this.props.maxlength)} 
-						placeholder="Your message here...">
-					</textarea>
-			    	<label className="mdl-textfield__label" 
-			    		htmlFor="sample5">
-			    	</label>
-				</div>			
-				<div className="mdl-card__supporting-text">
-					<h4>{parseInt(this.props.maxlength - this.state.message.length)} characters left</h4>
+        	<div id="message" className="mdl-card mdl-shadow--2dp">
+				<div className="mdl-card__title">
+				    <h3 className="mdl-card__title-text"></h3>
 				</div>
-					<div className="mdl-card__actions mdl-card--border">	
-					<a className="mdl-button mdl-js-button mdl-button--raised mdl-button--accent" onClick={this.handlePayment} disabled={this.state.disabled}>
-						  BUY £5
-					</a>			    	
-						
-				  </div>
-				  
+				<div className="mdl-card__supporting-text">
+					<div className="mdl-textfield mdl-js-textfield">
+						<textarea className="mdl-textfield__input" 
+							type="text" 
+					    	rows= "5" 
+					    	id="message" 
+					    	onChange={this.onChange} 
+							value={this.state.message} 
+							maxLength={parseInt(this.props.maxlength)} 
+							placeholder="Your message here...">
+						</textarea>
+						<label className="mdl-textfield__label" htmlFor="sample5"></label>
+					</div>					
+				</div>
+				<div className="mdl-card__actions mdl-card--border">
+					<a className="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" onClick={this.handlePayment} disabled={this.state.disabled}>
+						ORDER NOW £5
+					</a>
+				</div>
+				<div id="charCount" className="mdl-card__menu">
+					<span className="mdl-badge" data-badge={parseInt(this.props.maxlength - this.state.message.length)}></span>					
+				</div>
 			</div>
         );
     }
