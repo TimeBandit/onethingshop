@@ -26,7 +26,7 @@ function HowCard(props) {
     width: "100%"
   }
   return (
-  <div className="mdl-card mdl-shadow--4dp" style={outer}>
+  <div className="mdl-card mdl-shadow--2dp" style={outer}>
     <div className="mdl-card__media" style={{height:"320px", backgroundColor: "#ffffff"}}>
       <img src={props.url} width="200" height="auto" border="0" alt="" style={{padding:"10px", display: "block", margin: "0px auto"}} />
     </div>    
