@@ -35,7 +35,7 @@ Buy = React.createClass({
 		
 		var handler = StripeCheckout.configure({
 			key: Meteor.settings.public.stripe,
-            image: 'img/icon.png',
+            image: 'img/spatula-256px-500pxcv.png',
             name: 'Post a Spatula',
         	description: 'Enter the recipents adress to send',
         	amount: 500,
