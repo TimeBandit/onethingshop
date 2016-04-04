@@ -70,7 +70,7 @@ if (Meteor.isClient) {
       desc="Press 'BUY'. You will see a dialog appear. Enter the shipping details and payment information. Remember to enter the correct shipping details of the person you will send a spatula to."
       />, document.getElementById("how2"));
     
-    render(<HowCard url="img/postman-200px.png"
+    render(<HowCard url="img/envelope2.png"
       stepnum="Three" 
       desc="The payment will process. You will see a confirmation message and we will post your spatula with proof of delivery. You will not be charged if the card is declined. Enjoy!" 
       />, document.getElementById("how3"));

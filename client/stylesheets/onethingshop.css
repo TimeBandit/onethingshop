@@ -7,6 +7,10 @@ body {
 
 }
 
+#social_icons , a {
+    cursor: pointer;
+}
+
 .page__content {
     max-width: 900px;
     margin: 0 auto;
@@ -79,6 +83,11 @@ body {
     border-color: #ffffff;
 }
 
+#message .mdl-card__actions {
+    display: flex;
+    justify-content: center;
+}
+
 #charCount {
     padding-top: 10px;
 }
@@ -113,4 +122,5 @@ body {
 
 i {
     margin-left: 5px;
+    cursor: pointer;
 }
