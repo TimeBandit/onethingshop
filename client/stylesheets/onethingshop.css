@@ -11,6 +11,20 @@ body {
     cursor: pointer;
 }
 
+#heading {
+    font-size: 60px;
+    font-weight: 500;
+    line-height: 1;
+    color: #767777;
+}
+
+#subheading {
+    font-size: 21px;
+    font-weight: 500;
+    line-height: 1;
+    color: #767777;
+}
+
 .page__content {
     max-width: 900px;
     margin: 0 auto;
