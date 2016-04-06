@@ -1,28 +1,7 @@
 /* CSS declarations go here */
 
-body {
-    background-image: url('img/light_grey.png');
-    background-position: center center;
-    background-repeat: repeat;
+body {   
 
-}
-
-#social_icons , a {
-    cursor: pointer;
-}
-
-#heading {
-    font-size: 60px;
-    font-weight: 500;
-    line-height: 1;
-    color: #767777;
-}
-
-#subheading {
-    font-size: 21px;
-    font-weight: 500;
-    line-height: 1;
-    color: #767777;
 }
 
 .page__content {
@@ -31,6 +10,47 @@ body {
     padding-top: 50px;
     padding-left: 50px;
     
+}
+
+#social_icons , a {
+    cursor: pointer;
+}
+
+.section1 {
+    background-color: #e97f02;
+}
+
+.section2 {
+    background-color: #bd1550;
+}
+
+.section3 {
+    background-color: #490a3d;
+}
+
+#heading {
+    font-size: 60px;
+    font-weight: 500;
+    line-height: 1;
+    color: #ffffff;
+}
+
+#subheading {
+    font-size: 21px;
+    font-weight: 500;
+    line-height: 1;
+    color: #ffffff;
+}
+
+.mdl-grid.page__content h3 {
+    font-weight: 500;
+    line-height: 1;
+    color: #ffffff;   
+}
+
+.mdl-layout-title {
+    font-weight: 500;
+    line-height: 1; 
 }
 
 .demo-card-image2 {

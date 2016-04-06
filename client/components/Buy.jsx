@@ -183,7 +183,7 @@ Buy = React.createClass({
 
     render: function() {
         return (
-        	<div id="message" className="mdl-card mdl-shadow--2dp">
+        	<div id="message" className="mdl-card">
 				<div className="mdl-card__title">
 				    <h3 className="mdl-card__title-text"></h3>
 				</div>
