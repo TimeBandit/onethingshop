@@ -203,8 +203,8 @@ Buy = React.createClass({
 				</div>
 				<div className="mdl-card__actions mdl-card--border">
 					<a className="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" onClick={this.handlePayment} disabled={this.state.disabled}>
-						ORDER NOW £5
-					</a>
+						ORDER NOW £5						
+					</a>		
 				</div>
 				<div id="charCount" className="mdl-card__menu">
 					<span className="mdl-badge" data-badge={parseInt(this.props.maxlength - this.state.message.length)}></span>					

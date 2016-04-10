@@ -71,7 +71,7 @@ Tweetpics = React.createClass({
 			
 			var {created_at, text, ...other} = value;
 			var url = value.entities.media[0].url;
-			var img_src = value.entities.media[0].media_url;
+			var img_src = (value.entities.media[0].media_url).replace('http', 'https');
 			var tweet_id = value.id;
 			var alt = text.split('http', 1)[0];
 			
