@@ -154,7 +154,7 @@ body {
     padding: 0px;
 }
 
-i {
+i, a.fa {
     margin-left: 5px;
     cursor: pointer;
 }

@@ -118,8 +118,8 @@ if (Meteor.isServer) {
 
     var args = {
       count: 20,
-      user_id: 'FoodPornPhotos',
-      screen_name: 'FoodPornPhotos'
+      user_id: 'sendaspatula',
+      screen_name: 'sendaspatula'
     };
 
     /* fetch tweets */    
