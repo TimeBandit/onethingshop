@@ -29,3 +29,5 @@ http
 mrt:jquery-imagesloaded
 react-meteor-data
 force-ssl
+spiderable
+okgrow:analytics

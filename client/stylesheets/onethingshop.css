@@ -55,21 +55,21 @@ body {
 
 .demo-card-image2 {
     min-height: 284px;
-    background: url('img/cup2.jpg');
+    background: url('img/img3800x600.jpg');
     background-position: center;
     background-size: cover;
 }
 
 .demo-card-image4 {
     min-height: 284px;
-    background: url('img/cup4.jpg');
+    background: url('img/img2800x600.jpg');
     background-position: center;
     background-size: cover;
 }
 
 .demo-card-image1 {
     min-height: 284px;
-    background: url('img/cup1.jpg');
+    background: url('img/img1800x600.jpg');
     background-position: center;
     background-size: cover;
 }

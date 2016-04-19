@@ -53,6 +53,7 @@ mrt:jquery-imagesloaded@0.0.2
 mrt:jquery-masonry@0.1.0
 npm-mongo@1.4.42
 observe-sequence@1.0.10
+okgrow:analytics@1.0.5
 ordered-dict@1.0.6
 promise@0.6.6
 random@1.0.8
@@ -65,6 +66,7 @@ schiller:twit@0.0.3
 slam310:smooth-scroll@0.0.5
 spacebars@1.0.10
 spacebars-compiler@1.0.10
+spiderable@1.0.12
 standard-minifier-css@1.0.5
 standard-minifier-js@1.0.5
 templating@1.1.8

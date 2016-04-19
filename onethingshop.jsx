@@ -74,23 +74,6 @@ if (Meteor.isClient) {
       stepnum="Three" 
       desc="The payment will process. You will see a confirmation message and we will post your spatula with proof of delivery. You will not be charged if the card is declined. Enjoy!" 
       />, document.getElementById("how3"));
-
-    /* head code */
-    console.log('comodoHead.js');
-    var tlJsHost = ((window.location.protocol == "https:") ? "https://secure.comodo.com/" : "http://www.trustlogo.com/");
-
-    var script = document.createElement('script');
-    script.type = 'text/javascript';
-    script.src = tlJsHost + "trustlogo/javascript/trustlogo.js";
-
-    $("head").append(script);
-
-    /* body code */
-    
-    var script2 = document.createElement('script');
-    script2.type = 'text/javascript';
-    script2.url = '/scripts/comodoBody.js';
-    $("body").append(script2);
     
   });
 }
